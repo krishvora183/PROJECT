@@ -1,0 +1,245 @@
+.admin-layout {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  background: rgba(249, 250, 251, 0.5);
+}
+
+.admin-content {
+  flex: 1;
+  padding: 40px;
+  background: transparent;
+}
+
+.admin-header {
+  margin-bottom: 35px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.admin-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.stat-card {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+  transition: width 0.3s ease;
+}
+
+.stat-card:hover::before {
+  width: 8px;
+}
+
+.stat-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-value {
+  transform: scale(1.05);
+}
+
+.stat-change {
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.dashboard-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--dark);
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  font-weight: 700;
+  color: var(--dark);
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.data-table td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  transition: background 0.3s ease;
+}
+
+.data-table tr {
+  transition: all 0.3s ease;
+}
+
+.data-table tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+  transform: scale(1.01);
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.action-btn {
+  padding: 25px;
+  border: 2px solid rgba(229, 231, 235, 0.5);
+  background: white;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.action-btn:hover::before {
+  opacity: 1;
+}
+
+.action-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+}
+
+.action-btn span {
+  font-size: 36px;
+  transition: transform 0.4s ease;
+}
+
+.action-btn:hover span {
+  transform: scale(1.2) rotate(10deg);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  
+  .admin-content {
+    padding: 25px 20px;
+  }
+  
+  .admin-header h1 {
+    font-size: 28px;
+  }
+  
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}

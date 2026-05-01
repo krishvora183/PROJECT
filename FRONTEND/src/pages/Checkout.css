@@ -1,0 +1,123 @@
+.checkout-page {
+  padding: 40px 0;
+}
+
+.checkout-page h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--dark);
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.checkout-form h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: var(--dark);
+}
+
+.checkout-form h2:first-child {
+  margin-top: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+  border-color: var(--primary);
+  background-color: rgba(79, 70, 229, 0.05);
+}
+
+.payment-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
+.payment-option span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.order-summary-checkout {
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+
+.order-summary-checkout h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+.summary-items {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--text);
+}
+
+.summary-totals .summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.summary-totals .summary-row.total {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  border-top: 2px solid var(--border);
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .order-summary-checkout {
+    position: relative;
+    top: 0;
+  }
+}

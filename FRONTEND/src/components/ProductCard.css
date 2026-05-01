@@ -1,0 +1,39 @@
+/* Basic product card styling */
+.product-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.product-image {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+
+.product-info {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.product-price {
+  color: #10b981;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+}
