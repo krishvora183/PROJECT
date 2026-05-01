@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 import './AdminProducts.css';
@@ -28,7 +28,7 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get('/api/products');
+      const { data } = await api.get('/api/products');
       setProducts(data);
     } catch (error) {
       console.error(error);
@@ -80,7 +80,7 @@ const AdminProducts = () => {
         },
       };
 
-      const { data } = await axios.post('/api/upload', formDataObj, configUpload);
+      const { data } = await api.post('/api/upload', formDataObj, configUpload);
       
       setFormData({ ...formData, image: data });
       setUploading(false);
@@ -93,7 +93,7 @@ const AdminProducts = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`/api/products/${id}`, config);
+        await api.delete(`/api/products/${id}`, config);
         fetchProducts();
       } catch (error) {
         alert('Error deleting product');
@@ -116,10 +116,10 @@ const AdminProducts = () => {
     
     try {
       if (editingProduct) {
-        await axios.put(`/api/products/${editingProduct._id}`, payload, config);
+        await api.put(`/api/products/${editingProduct._id}`, payload, config);
       } else {
-        const { data: newProd } = await axios.post('/api/products', {}, config);
-        await axios.put(`/api/products/${newProd._id}`, payload, config);
+        const { data: newProd } = await api.post('/api/products', {}, config);
+        await api.put(`/api/products/${newProd._id}`, payload, config);
       }
       setShowModal(false);
       fetchProducts();

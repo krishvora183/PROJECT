@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 
@@ -22,7 +22,7 @@ const AdminComplaints = () => {
 
   const fetchComplaints = async () => {
     try {
-      const { data } = await axios.get('/api/complaints', config);
+      const { data } = await api.get('/api/complaints', config);
       setComplaints(data);
     } catch (error) {
       console.error(error);
@@ -39,7 +39,7 @@ const AdminComplaints = () => {
 
   const handleAssign = async (id) => {
     try {
-      await axios.put(`/api/complaints/${id}/status`, { status: 'Resolved' }, config);
+      await api.put(`/api/complaints/${id}/status`, { status: 'Resolved' }, config);
       fetchComplaints();
       setSelectedComplaint(null);
     } catch (error) {

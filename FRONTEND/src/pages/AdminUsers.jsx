@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 
@@ -23,7 +23,7 @@ const AdminUsers = () => {
         if (!userInfo || !userInfo.token) return;
 
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get('/api/auth/users', config);
+        const { data } = await api.get('/api/auth/users', config);
         
         const mappedUsers = data.map(u => ({
             id: u._id.toString().substring(0,8),

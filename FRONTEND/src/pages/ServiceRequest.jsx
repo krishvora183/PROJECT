@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import './ServiceRequest.css';
 
@@ -24,7 +24,7 @@ const ServiceRequest = () => {
       }
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       
-      await axios.post('/api/services', {
+      await api.post('/api/services', {
         serviceType: formData.serviceType,
         description: `Product/Order ID: ${formData.productId}\nPreferred Date: ${formData.preferredDate}\n${formData.description}`,
       }, config);

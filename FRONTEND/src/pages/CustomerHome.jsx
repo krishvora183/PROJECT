@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import './CustomerHome.css';
 import './AdminProducts.css'; // Utilizing the bulletproof grid modal layout
 
@@ -24,7 +24,7 @@ const CustomerHome = () => {
         if (!userInfo || !userInfo.token) return;
 
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get('/api/orders/myorders', config);
+        const { data } = await api.get('/api/orders/myorders', config);
         
         // Update stats
         setStats(prev => [

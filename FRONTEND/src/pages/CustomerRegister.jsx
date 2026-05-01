@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import './AuthPages.css';
 
 const CustomerRegister = () => {
@@ -46,7 +46,7 @@ const CustomerRegister = () => {
     if (Object.keys(newErrors).length === 0) {
       setIsLoading(true);
       try {
-        await axios.post('/api/auth/register', {
+        await api.post('/api/auth/register', {
           name: formData.name,
           email: formData.email,
           password: formData.password,

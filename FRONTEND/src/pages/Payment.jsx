@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import { useCart } from '../context/CartContext';
 import './Payment.css';
 
@@ -60,7 +60,7 @@ const Payment = () => {
         payload.isPaid = true;
       }
 
-      await axios.post('/api/orders', payload, config);
+      await api.post('/api/orders', payload, config);
       
       clearCart();
       setPaymentStatus('success');
@@ -103,7 +103,7 @@ const Payment = () => {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       
       // 1. Create order on backend
-      const { data: orderDataResponse } = await axios.post('/api/payment/create-order', {
+      const { data: orderDataResponse } = await api.post('/api/payment/create-order', {
         amount: total,
         currency: 'INR'
       }, config);
@@ -126,7 +126,7 @@ const Payment = () => {
         handler: async function (response) {
           // 3. Verify Signature
           try {
-            await axios.post('/api/payment/verify', {
+            await api.post('/api/payment/verify', {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature

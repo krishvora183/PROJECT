@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 import './AdminProducts.css';
@@ -23,7 +23,7 @@ const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axios.get('/api/orders', config);
+      const { data } = await api.get('/api/orders', config);
       setOrders(data);
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ const AdminOrders = () => {
 
   const markAsDelivered = async (id) => {
     try {
-      await axios.put(`/api/orders/${id}/deliver`, {}, config);
+      await api.put(`/api/orders/${id}/deliver`, {}, config);
       fetchOrders();
       closeModal();
     } catch (error) {

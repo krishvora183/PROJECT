@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 
@@ -27,7 +27,7 @@ const AdminDashboard = () => {
       try {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-        const { data } = await axios.get('/api/reports/dashboard', config);
+        const { data } = await api.get('/api/reports/dashboard', config);
         setStats(data.stats);
         setRecentOrders(data.recentOrders);
       } catch (error) {

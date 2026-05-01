@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import './Complaints.css';
 
@@ -20,7 +20,7 @@ const Complaints = () => {
       const userInfo = JSON.parse(localStorage.getItem('userInfo'));
       if (!userInfo) return;
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('/api/complaints/mycomplaints', config);
+      const { data } = await api.get('/api/complaints/mycomplaints', config);
       setComplaints(data);
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ const Complaints = () => {
       }
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       
-      const { data } = await axios.post('/api/complaints', {
+      const { data } = await api.post('/api/complaints', {
         relatedId: formData.orderId,
         description: `Subject: ${formData.subject}\nCategory: ${formData.category}\n\n${formData.description}`,
       }, config);
@@ -65,7 +65,7 @@ const Complaints = () => {
         return;
       }
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const { data } = await axios.get('/api/complaints/mycomplaints', config);
+      const { data } = await api.get('/api/complaints/mycomplaints', config);
       const complaint = data.find(c => c._id === trackingId);
       if (complaint) {
         alert(`Status: ${complaint.status}\nIssue: ${complaint.description.substring(0,50)}...`);

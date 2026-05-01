@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import Sidebar from '../components/Sidebar';
 import './AdminDashboard.css';
 
@@ -22,7 +22,7 @@ const AdminServices = () => {
 
   const fetchServices = async () => {
     try {
-      const { data } = await axios.get('/api/services', config);
+      const { data } = await api.get('/api/services', config);
       setServices(data);
     } catch (error) {
       console.error(error);
@@ -39,7 +39,7 @@ const AdminServices = () => {
 
   const handleAssign = async (id, currentStatus) => {
     try {
-      await axios.put(`/api/services/${id}/status`, { status: currentStatus === 'Pending' ? 'In Progress' : 'Completed' }, config);
+      await api.put(`/api/services/${id}/status`, { status: currentStatus === 'Pending' ? 'In Progress' : 'Completed' }, config);
       fetchServices();
       setSelectedService(null);
     } catch (error) {
