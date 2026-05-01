@@ -117,7 +117,7 @@ const Payment = () => {
 
       // 2. Initialize Razorpay options
       const options = {
-        key: 'rzp_test_your_dummy_key_here', // We put a dummy here, so the script loads, but it will fail on payment submission natively if invalid!
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || '',
         amount: orderDataResponse.amount,
         currency: orderDataResponse.currency,
         name: 'Electrical Store',
